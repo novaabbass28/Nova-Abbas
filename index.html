@@ -13,107 +13,111 @@
             --accent: #ff4d6d;
             --text-main: #2d3436;
             --text-light: #636e72;
+            --border-soft: #f9ecee;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.7; scroll-behavior: smooth; }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
-        /* --- Header --- */
+        /* --- Navigation --- */
         header {
             padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid #f1f1f1;
+            border-bottom: 1px solid var(--border-soft);
         }
 
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--deep-pink); font-weight: 600; text-decoration: none; }
-        nav a { text-decoration: none; color: var(--text-light); font-size: 0.85rem; margin-left: 30px; font-weight: 500; transition: 0.3s; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--deep-pink); font-weight: 600; text-decoration: none; letter-spacing: -0.5px; }
+        nav a { text-decoration: none; color: var(--text-light); font-size: 0.8rem; margin-left: 30px; font-weight: 600; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
         nav a:hover { color: var(--accent); }
 
-        /* --- Hero Section with Photo --- */
+        /* --- Hero Section --- */
         .hero {
-            padding: 100px 8% 60px;
+            padding: 100px 8% 80px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 50px;
+            gap: 60px;
             background: linear-gradient(to bottom, #fff, var(--soft-pink));
         }
 
-        .hero-text { flex: 1; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px; }
-        .hero p { color: var(--text-light); font-size: 1.1rem; }
+        .hero-text { flex: 1.2; text-align: left; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 25px; color: var(--text-main); }
+        .hero h1 em { color: var(--accent); font-style: italic; }
+        .hero p { color: var(--text-light); font-size: 1.15rem; max-width: 500px; font-weight: 400; }
 
-        /* TEMPAT FOTO PROFIL UTAMA */
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
+        .hero-image { flex: 0.8; display: flex; justify-content: center; position: relative; }
         .profile-frame {
             width: 320px;
-            height: 400px;
-            background: #eee;
-            border-radius: 60px 20px 60px 20px;
+            height: 420px;
+            background: #fdf2f4;
+            border-radius: 80px 20px;
             overflow: hidden;
-            border: 4px solid #fff;
-            box-shadow: 0 20px 40px rgba(255, 133, 161, 0.15);
+            border: 8px solid #fff;
+            box-shadow: 0 30px 60px rgba(255, 133, 161, 0.12);
         }
-
         .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .swan-decor { position: absolute; bottom: -30px; right: 10px; font-size: 5rem; opacity: 0.1; pointer-events: none; }
 
-        .swan-decor { position: absolute; bottom: -20px; right: 20px; font-size: 4rem; opacity: 0.2; }
+        /* --- Layout Container --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 8%; }
+        section { margin-bottom: 100px; animation: fadeInUp 0.8s ease both; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- Container --- */
-        .container { max-width: 1100px; margin: 0 auto; padding: 60px 8%; }
-        section { margin-bottom: 80px; animation: fadeInUp 1s ease both; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .section-header { margin-bottom: 40px; border-bottom: 1px solid var(--border-soft); padding-bottom: 15px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--text-main); font-weight: 600; }
 
-        .section-header { margin-bottom: 30px; border-bottom: 1px solid #ffeef1; padding-bottom: 10px; }
-        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--text-main); }
+        /* --- Content Cards --- */
+        .content-card { background: var(--soft-pink); padding: 45px; border-radius: 30px; border: 1px solid var(--border-soft); text-align: left; }
+        .content-card p { font-size: 1.05rem; color: var(--text-main); text-align: left; }
 
-        .content-card { background: var(--soft-pink); padding: 35px; border-radius: 20px; border: 1px solid #ffeef1; }
-
-        /* --- Portfolio & Business with Images --- */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .item-card { background: #fff; padding: 25px; border-radius: 15px; border: 1px solid #f1f1f1; }
+        /* --- Portfolio Grid --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .item-card { background: #fff; padding: 30px; border-radius: 25px; border: 1px solid var(--border-soft); transition: transform 0.3s ease; display: flex; flex-direction: column; }
+        .item-card:hover { transform: translateY(-10px); }
         
-        /* TEMPAT FOTO BISNIS / PROYEK */
-        .item-img {
-            width: 100%;
-            height: 180px;
-            background: #f9f9f9;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
+        .item-img { width: 100%; height: 220px; background: #fef8f9; border-radius: 20px; margin-bottom: 25px; overflow: hidden; }
         .item-img img { width: 100%; height: 100%; object-fit: cover; }
 
-        .date { color: var(--deep-pink); font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 10px; text-transform: uppercase; }
-        h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--accent); }
+        .date { color: var(--deep-pink); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; display: block; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 12px; color: var(--text-main); }
+        .item-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.6; }
 
+        /* --- List Styling --- */
         ul { list-style: none; }
-        ul li { margin-bottom: 12px; padding-left: 20px; position: relative; }
-        ul li::before { content: "✦"; position: absolute; left: 0; color: var(--deep-pink); }
+        ul li { margin-bottom: 15px; padding-left: 28px; position: relative; font-size: 1.05rem; color: var(--text-main); }
+        ul li::before { content: "✦"; position: absolute; left: 0; color: var(--deep-pink); font-size: 1.1rem; }
+
+        /* --- Business Section --- */
+        .business-flex { display: flex; gap: 40px; flex-wrap: wrap; align-items: center; }
+        .business-text { flex: 1; min-width: 300px; }
+        .business-logo { width: 220px; height: 220px; background: #fff; border-radius: 30px; overflow: hidden; border: 1px solid var(--border-soft); display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 30px rgba(0,0,0,0.03); }
+        .business-logo img { width: 85%; height: 85%; object-fit: contain; }
 
         /* --- Footer --- */
-        footer { padding: 80px 8%; text-align: center; background: var(--soft-pink); border-radius: 50px 50px 0 0; }
-        .wa-btn { display: inline-block; padding: 15px 40px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 50px; font-weight: 600; margin-top: 25px; box-shadow: 0 10px 20px rgba(255, 77, 109, 0.2); transition: 0.3s; }
-        .wa-btn:hover { transform: translateY(-3px); background: #ff1a4a; }
+        footer { padding: 100px 8%; text-align: center; background: var(--soft-pink); border-radius: 60px 60px 0 0; border-top: 1px solid var(--border-soft); }
+        .contact-info { margin-bottom: 30px; }
+        .contact-info p { font-size: 1.1rem; margin-bottom: 10px; font-weight: 500; }
+        .wa-btn { display: inline-block; padding: 18px 50px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 100px; font-weight: 600; font-size: 1rem; box-shadow: 0 15px 30px rgba(255, 77, 109, 0.25); transition: 0.3s; }
+        .wa-btn:hover { transform: scale(1.05); background: #ff1a4a; }
+        .copyright { margin-top: 80px; font-size: 0.75rem; color: #b2bec3; letter-spacing: 2px; text-transform: uppercase; }
 
-        /* --- Responsive --- */
+        /* --- Mobile Optimization --- */
         @media (max-width: 850px) {
-            .hero { flex-direction: column-reverse; text-align: center; padding-top: 50px; }
-            .profile-frame { width: 260px; height: 320px; }
+            header { padding: 15px 5%; }
+            .hero { flex-direction: column-reverse; text-align: center; padding: 60px 5% 40px; gap: 40px; }
+            .hero-text { text-align: center; }
+            .hero p { margin: 0 auto; }
+            .profile-frame { width: 280px; height: 360px; }
             nav { display: none; }
+            .container { padding: 40px 5%; }
+            .content-card { padding: 30px; }
         }
     </style>
 </head>
@@ -131,13 +135,13 @@
 
     <section class="hero">
         <div class="hero-text">
-            <h1>NOVA ABBAS<em>.</em></h1>
-            <p>Mahasiswa Bisnis Digital | Tertarik Marketing, E-Commerce & Data Analis</p>
+            <h1>NOVA <br> ABBAS<em>.</em></h1>
+            <p>Mahasiswa Bisnis Digital yang berfokus pada Marketing, E-Commerce & Data Analis.</p>
         </div>
         <div class="hero-image">
             <div class="swan-decor">🦢</div>
             <div class="profile-frame">
-                <img src="novaphoto.jpg.jpeg" alt="Nova Abbas">
+                <img src="IMG_6234.jpg" alt="Nova Abbas Profile">
             </div>
         </div>
     </section>
@@ -154,9 +158,8 @@
         <section id="skills">
             <div class="section-header"><h2>Skills</h2></div>
             <div class="content-card">
-                <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                    <li>Microsoft Excel 
-                        (Basic & Pivot Table)</li>
+                <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">
+                    <li>Microsoft Excel (Basic & Pivot Table)</li>
                     <li>Marketplace Management</li>
                     <li>Digital Marketing</li>
                     <li>Data Entry (Accurate)</li>
@@ -169,15 +172,15 @@
             <div class="grid">
                 <div class="item-card">
                     <div class="item-img"><img src="foto-admin.jpg" alt="Admin Marketplace"></div>
-                    <span class="date">2023 – sekarang</span>
+                    <span class="date">2023 – Sekarang</span>
                     <h3>Admin Marketplace</h3>
-                    <p>Mengelola pesanan, produk, stok, menginput data penjualan, serta melayani pelanggan untuk meningkatkan penjualan dan kepercayaan konsumen.</p>
+                    <p>Mengelola operasional harian termasuk pesanan, stok, dan input data penjualan, serta memastikan kepuasan pelanggan tetap terjaga.</p>
                 </div>
                 <div class="item-card">
                     <div class="item-img"><img src="foto-pemateri.jpg" alt="Pemateri"></div>
                     <span class="date">27 Juni 2025</span>
-                    <h3>Pemateri Pengabdian Masyarakat</h3>
-                    <p>Tema: "Cerdas Mengelola Keuangan Sejak Dini" Di Pondok Pesantren Darussalam Poris Jaya Batu Ceper Kota Tangerang.</p>
+                    <h3>Pemateri Edukasi</h3>
+                    <p>Membawakan materi "Cerdas Mengelola Keuangan Sejak Dini" di Pondok Pesantren Darussalam Poris Jaya, Tangerang.</p>
                 </div>
             </div>
         </section>
@@ -185,14 +188,14 @@
         <section id="business">
             <div class="section-header"><h2>Business</h2></div>
             <div class="content-card">
-                <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
-                    <div style="flex: 1; min-width: 300px;">
+                <div class="business-flex">
+                    <div class="business-text">
+                        <span class="date">E-Commerce Venture</span>
                         <h3>Nova Lumina</h3>
-                        <p>Nova Lumina adalah nama sebuah toko online yang saya miliki, yang bergerak di bidang penjualan melalui marketplace seperti Shopee. Fokus pada kualitas produk, harga terjangkau, dan pelayanan responsif.</p>
-                        <p style="margin-top: 10px;">Saat ini Nova Lumina telah aktif berjualan di Shopee dan terus dikembangkan untuk menjangkau pasar yang lebih luas.</p>
+                        <p>Toko online berbasis marketplace (Shopee) yang fokus pada produk berkualitas dengan pelayanan responsif. Bisnis ini merupakan implementasi nyata dari studi Bisnis Digital saya.</p>
                     </div>
-                    <div style="width: 200px; height: 200px; background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid #f1f1f1;">
-                        <img src="logo-nova-lumina.jpg" alt="Nova Lumina Logo" style="width:100%; height:100%; object-fit:contain;">
+                    <div class="business-logo">
+                        <img src="logo-nova-lumina.jpg" alt="Nova Lumina Logo">
                     </div>
                 </div>
             </div>
@@ -202,9 +205,9 @@
             <div class="section-header"><h2>Goals</h2></div>
             <div class="content-card">
                 <ul>
-                    <li>Lulus tepat waktu dengan hasil maksimal</li>
-                    <li>Mengembangkan karier di bidang Bisnis Digital</li>
-                    <li>Membangun dan mengembangkan bisnis sendiri</li>
+                    <li>Lulus tepat waktu dengan pencapaian akademis maksimal.</li>
+                    <li>Membangun karier profesional di industri Bisnis Digital.</li>
+                    <li>Mengembangkan unit bisnis mandiri yang berkelanjutan.</li>
                 </ul>
             </div>
         </section>
@@ -212,11 +215,13 @@
     </div>
 
     <footer id="contact">
-        <div class="section-header" style="border:none;"><h2>Contact</h2></div>
-        <p>Email: <strong>novaabbass28@gmail.com</strong></p>
-        <p>WhatsApp: <strong>0895374763405</strong></p>
-        <a href="https://wa.me/62895374763405" class="wa-btn">Send a Message</a>
-        <p style="margin-top: 60px; font-size: 0.7rem; color: #bbb; letter-spacing: 2px;">&copy; 2026 NOVA ABBAS PORTFOLIO</p>
+        <div class="section-header" style="border:none; text-align: center;"><h2>Get In Touch</h2></div>
+        <div class="contact-info">
+            <p>novaabbass28@gmail.com</p>
+            <p>+62 895 3747 63405</p>
+        </div>
+        <a href="https://wa.me/62895374763405" class="wa-btn">Kirim Pesan Sekarang</a>
+        <p class="copyright">&copy; 2026 NOVA ABBAS PORTFOLIO</p>
     </footer>
 
 </body>
