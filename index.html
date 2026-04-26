@@ -3,210 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Abbas Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Portfolio Nova Abbas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #ffffff;
-            --pink-soft: #fffafa;
-            --pink-accent: #ff85a1;
+            --bg-color: #ffffff;
+            --soft-pink: #fffafa;
+            --deep-pink: #ff85a1;
+            --accent: #ff4d6d;
             --text-main: #2d3436;
-            --text-muted: #636e72;
+            --text-light: #636e72;
         }
 
         * {
-            margin: 0; padding: 0; box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            background-color: var(--bg);
+            background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* --- Minimalist Nav --- */
-        nav {
-            padding: 40px 8%;
+        /* --- Header --- */
+        header {
+            padding: 30px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #f1f1f1;
         }
 
-        .brand {
+        .logo {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            font-style: italic;
-            color: var(--pink-accent);
+            color: var(--deep-pink);
+            font-weight: 600;
             text-decoration: none;
         }
 
-        .nav-links a {
+        nav a {
             text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            color: var(--text-light);
+            font-size: 0.85rem;
             margin-left: 30px;
+            font-weight: 500;
             transition: 0.3s;
         }
 
-        .nav-links a:hover { color: var(--pink-accent); }
+        nav a:hover { color: var(--accent); }
 
         /* --- Hero Section --- */
         .hero {
             padding: 100px 8%;
-            max-width: 1200px;
-            animation: fadeIn 1.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero span {
-            color: var(--pink-accent);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            text-align: center;
+            background: linear-gradient(to bottom, #fff, var(--soft-pink));
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 400;
-            margin: 20px 0;
-            line-height: 1;
-        }
-
-        /* --- Content Layout --- */
-        .content-grid {
-            padding: 60px 8%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            border-top: 1px solid #f1f1f1;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--pink-accent);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             margin-bottom: 20px;
-            display: block;
         }
 
-        h2 {
+        .hero p {
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* --- Main Container --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 8%;
+        }
+
+        section {
+            margin-bottom: 100px;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-header h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
-            margin-bottom: 25px;
-            font-weight: 400;
+            font-weight: 600;
+            display: inline-block;
         }
 
-        p { color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; }
-
-        /* --- Swan Decor (Minimalis) --- */
-        .swan-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            opacity: 0.6;
+        /* Sentuhan Angsa Halus */
+        .section-header::after {
+            content: '🦢';
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 2rem;
+            opacity: 0.15;
         }
 
-        /* --- List Style --- */
-        .skills-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .skills-list li::before {
-            content: "— ";
-            color: var(--pink-accent);
-        }
-
-        /* --- Contact Footer --- */
-        footer {
-            padding: 100px 8%;
-            background-color: var(--pink-soft);
-            text-align: center;
-        }
-
-        .contact-link {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            color: var(--text-main);
-            text-decoration: none;
-            border-bottom: 1px solid var(--pink-accent);
+        /* --- Style List & Content --- */
+        .content-card {
+            background: var(--soft-pink);
+            padding: 40px;
+            border-radius: 2px; /* Kesan minimalis profesional */
+            border: 1px solid #ffeef1;
             transition: 0.4s;
         }
 
-        .contact-link:hover { color: var(--pink-accent); }
+        .content-card:hover {
+            border-color: var(--deep-pink);
+            box-shadow: 0 10px 30px rgba(255, 133, 161, 0.05);
+        }
 
-        /* --- Mobile Responsive --- */
-        @media (max-width: 850px) {
-            .content-grid { grid-template-columns: 1fr; gap: 60px; }
-            .nav-links { display: none; }
-            .hero h1 { font-size: 3.5rem; }
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .item {
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+            padding-bottom: 20px;
+        }
+
+        .item:last-child { border: none; }
+
+        .date {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--deep-pink);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--deep-pink);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 80px 8%;
+            text-align: center;
+            border-top: 1px solid #f1f1f1;
+        }
+
+        .contact-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .wa-btn {
+            display: inline-block;
+            padding: 18px 45px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 25px;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.2);
+        }
+
+        .wa-btn:hover {
+            background: #ff1a4a;
+            transform: translateY(-3px);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            header { padding: 20px 5%; }
+            nav { display: none; }
+            .hero h1 { font-size: 2.8rem; }
+            .container { padding: 60px 5%; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="brand">NL.</a>
-        <div class="nav-links">
+    <header>
+        <a href="#" class="logo">Nova Lumina</a>
+        <nav>
             <a href="#about">About</a>
-            <a href="#work">Work</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#business">Business</a>
             <a href="#contact">Contact</a>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <span>Business Digital</span>
-        <h1>Nova Abbas<em>.</em></h1>
-        <p style="max-width: 600px;">Mahasiswa S1 Universitas Yatsi Madani yang berfokus pada ekosistem Digital Marketing, E-Commerce, dan Analisis Data.</p>
+        </nav>
     </header>
 
-    <main>
-        <section id="about" class="content-grid">
-            <div>
-                <span class="section-label">01 / Profile</span>
-                <h2>Anggunly Professional.</h2>
+    <div class="hero">
+        <h1>Portfolio</h1>
+        <p>Mahasiswa Bisnis Digital | Tertarik Marketing, E-Commerce & Data Analis</p>
+    </div>
+
+    <div class="container">
+        
+        <section id="about">
+            <div class="section-header">
+                <h2>About Me</h2>
             </div>
-            <div>
-                <div class="swan-icon">🦢</div>
-                <p>Saya memiliki pengalaman nyata dalam mengelola marketplace sejak 2023. Memastikan setiap operasional berjalan efisien, mulai dari stok hingga kepuasan pelanggan.</p>
-                <ul class="skills-list">
-                    <li>Excel Data Analysis</li>
-                    <li>Marketplace Admin</li>
+            <div class="content-card">
+                <p>Saya adalah mahasiswa S1 Bisnis Digital yang memiliki ketertarikan pada bidang Digital Marketing, E-Commerce, dan Analisis Data. Saya memiliki pengalaman dalam mengelola marketplace serta dasar pengolahan data menggunakan Microsoft Excel.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-header">
+                <h2>Skills</h2>
+            </div>
+            <div class="content-card">
+                <ul>
+                    <li>Microsoft Excel (Basic & Pivot Table)</li>
+                    <li>Marketplace Management</li>
                     <li>Digital Marketing</li>
-                    <li>Accurate Entry</li>
+                    <li>Data Entry (Accurate)</li>
                 </ul>
             </div>
         </section>
 
-        <section id="work" class="content-grid">
-            <div>
-                <span class="section-label">02 / Business</span>
-                <h2>Nova Lumina.</h2>
+        <section id="portfolio">
+            <div class="section-header">
+                <h2>Portfolio</h2>
             </div>
-            <div>
-                <p>Toko online berbasis Shopee yang mengedepankan kualitas dan pelayanan responsif. Ini adalah dedikasi saya dalam menerapkan ilmu Bisnis Digital secara langsung ke dunia profesional.</p>
-                <p style="font-style: italic;">"Cerdas mengelola, cerdas bertumbuh."</p>
+            <div class="content-card">
+                <div class="item">
+                    <h3>Admin Marketplace</h3>
+                    <span class="date">2023 – sekarang</span>
+                    <p>Mengelola pesanan, produk, stok, menginput data penjualan, serta melayani pelanggan untuk meningkatkan penjualan dan kepercayaan konsumen.</p>
+                </div>
+                <div class="item">
+                    <h3>Pemateri Pengabdian Masyarakat</h3>
+                    <span class="date">27 Juni 2025</span>
+                    <p>Tema: "Cerdas Mengelola Keuangan Sejak Dini" Di Pondok Pesantren Darussalam Poris Jaya Batu Ceper Kota Tangerang. Pengalaman ini membantu mengembangkan kemampuan public speaking dan edukasi keuangan.</p>
+                </div>
             </div>
         </section>
-    </main>
+
+        <section id="business">
+            <div class="section-header">
+                <h2>Business</h2>
+            </div>
+            <div class="content-card">
+                <h3>Nova Lumina</h3>
+                <p>Nova Lumina adalah nama sebuah toko online yang saya miliki, yang bergerak di bidang penjualan melalui marketplace seperti Shopee. Fokus pada kualitas produk, harga terjangkau, dan pelayanan responsif.</p>
+                <p style="margin-top: 15px;">Saat ini Nova Lumina telah aktif berjualan di Shopee dan terus dikembangkan untuk menjangkau pasar yang lebih luas.</p>
+            </div>
+        </section>
+
+        <section id="goals">
+            <div class="section-header">
+                <h2>Goals</h2>
+            </div>
+            <div class="content-card">
+                <ul>
+                    <li>Lulus tepat waktu dengan hasil maksimal</li>
+                    <li>Mengembangkan karier di bidang Bisnis Digital</li>
+                    <li>Membangun dan mengembangkan bisnis sendiri</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
 
     <footer id="contact">
-        <span class="section-label" style="text-align: center; display: block;">Get in Touch</span>
-        <a href="mailto:novaabbass28@gmail.com" class="contact-link">novaabbass28@gmail.com</a>
-        <div style="margin-top: 40px;">
+        <div class="contact-box">
+            <h2>Contact</h2>
+            <p>Email: novaabbass28@gmail.com</p>
             <p>WhatsApp: 0895374763405</p>
+            <a href="https://wa.me/62895374763405" class="wa-btn">Send a Message</a>
         </div>
+        <p style="margin-top: 60px; font-size: 0.75rem; color: #bbb;">&copy; 2026 Nova Lumina Portfolio | Universitas Yatsi Madani</p>
     </footer>
 
 </body>
