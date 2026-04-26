@@ -1,219 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nova Abbas Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - NOVA ABBAS</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg,#f9f9f9,#e6f0ff);
+  color: #333;
+  scroll-behavior: smooth;
+}
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins', sans-serif;
-    }
+/* HEADER */
+header {
+  background: linear-gradient(135deg,#111,#333);
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+}
 
-    body{
-      background:#0f172a;
-      color:#fff;
-      overflow-x:hidden;
-    }
+/* FOTO ANIMASI */
+header img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  animation: float 3s ease-in-out infinite;
+}
 
-    /* NAV */
-    nav{
-      position:fixed;
-      top:0;
-      width:100%;
-      padding:15px 40px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:rgba(15,23,42,0.8);
-      backdrop-filter:blur(10px);
-      z-index:1000;
-    }
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
 
-    nav h2{
-      font-size:20px;
-      color:#38bdf8;
-    }
+/* NAV */
+nav {
+  background: #222;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
 
-    nav a{
-      color:#fff;
-      margin-left:20px;
-      text-decoration:none;
-      transition:0.3s;
-    }
+nav a {
+  color: white;
+  margin: 8px 12px;
+  text-decoration: none;
+  transition: 0.3s;
+}
 
-    nav a:hover{
-      color:#38bdf8;
-    }
+nav a:hover {
+  color: #00c3ff;
+}
 
-    /* HERO */
-    .hero{
-      height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      background:linear-gradient(135deg,#0f172a,#1e293b);
-    }
+/* SECTION ANIMASI */
+section {
+  padding: 50px 20px;
+  max-width: 850px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
 
-    .hero h1{
-      font-size:3rem;
-      animation:fadeDown 1s ease;
-    }
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .hero p{
-      margin-top:10px;
-      opacity:0.8;
-      animation:fadeUp 1.2s ease;
-    }
+h2 {
+  border-left: 5px solid #00c3ff;
+  padding-left: 10px;
+}
 
-    .btn{
-      margin-top:20px;
-      padding:10px 20px;
-      border:none;
-      background:#38bdf8;
-      color:#000;
-      border-radius:8px;
-      cursor:pointer;
-      transition:0.3s;
-    }
+/* CARD */
+.card {
+  background: white;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
 
-    .btn:hover{
-      transform:scale(1.05);
-      background:#0ea5e9;
-    }
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
 
-    /* SECTION */
-    section{
-      padding:80px 20px;
-      max-width:1000px;
-      margin:auto;
-    }
+/* GAMBAR DI CARD */
+.card img {
+  border-radius: 10px;
+  transition: 0.4s;
+}
 
-    h2{
-      text-align:center;
-      margin-bottom:20px;
-      color:#38bdf8;
-    }
+.card img:hover {
+  transform: scale(1.03);
+}
 
-    .card{
-      background:#1e293b;
-      padding:20px;
-      margin:15px 0;
-      border-radius:12px;
-      transform:translateY(30px);
-      opacity:0;
-      transition:0.6s ease;
-    }
-
-    .card.show{
-      transform:translateY(0);
-      opacity:1;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
-
-    .project{
-      background:#334155;
-      padding:20px;
-      border-radius:10px;
-      transition:0.3s;
-    }
-
-    .project:hover{
-      transform:translateY(-5px);
-      background:#475569;
-    }
-
-    footer{
-      text-align:center;
-      padding:20px;
-      background:#020617;
-      margin-top:40px;
-    }
-
-    /* ANIMATION */
-    @keyframes fadeDown{
-      from{opacity:0; transform:translateY(-30px)}
-      to{opacity:1; transform:translateY(0)}
-    }
-
-    @keyframes fadeUp{
-      from{opacity:0; transform:translateY(30px)}
-      to{opacity:1; transform:translateY(0)}
-    }
-  </style>
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  color: white;
+}
+</style>
 </head>
+
 <body>
 
+<header>
+  <img src="fotokamu.jpg.jpeg">
+  <h1>NOVA ABBAS</h1>
+  <p>Mahasiswa Bisnis Digital | Marketing | E-Commerce | Data</p>
+</header>
+
 <nav>
-  <h2>Nova Abbas</h2>
-  <div>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#business">Business</a>
+  <a href="#goals">Goals</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<div class="hero">
-  <h1>Hi, I'm Nova Abbas</h1>
-  <p>Digital Business Student | E-Commerce Enthusiast | Entrepreneur</p>
-  <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Explore</button>
-</div>
-
 <section id="about">
-  <h2>About Me</h2>
-  <div class="card">
-    Saya mahasiswa Bisnis Digital yang fokus pada e-commerce, marketing, dan startup. Saat ini saya sedang membangun brand "Mehwa" dan mengembangkan pengalaman di dunia digital business.
-  </div>
+<h2>About Me</h2>
+<p>Saya mahasiswa Bisnis Digital dengan fokus Digital Marketing, E-Commerce, dan Data Analysis.</p>
 </section>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="grid">
-    <div class="project">Portfolio Website</div>
-    <div class="project">Shopee Store (Gold)</div>
-    <div class="project">Juz Amma App</div>
-    <div class="project">Mehwa Brand Project</div>
-  </div>
+<section id="skills">
+<h2>Skills</h2>
+<div class="card">Excel & Data Analysis</div>
+<div class="card">Marketplace Management</div>
+<div class="card">Digital Marketing</div>
+</section>
+
+<section id="portfolio">
+<h2>Portfolio</h2>
+
+<div class="card">
+<h3>Admin Marketplace</h3>
+<p>Mengelola produk, stok, dan penjualan di Shopee.</p>
+</div>
+
+<div class="card">
+<h3>Pemateri</h3>
+<img src="pemateri.jpeg" width="100%">
+</div>
+
+</section>
+
+<section id="business">
+<h2>Business</h2>
+<div class="card">
+<h3>Nova Lumina</h3>
+<img src="tokoshope.jpeg" width="100%">
+</div>
+</section>
+
+<section id="goals">
+<h2>Goals</h2>
+<div class="card">
+- Lulus tepat waktu <br>
+- Bangun bisnis sendiri <br>
+- Jadi entrepreneur
+</div>
 </section>
 
 <section id="contact">
-  <h2>Contact</h2>
-  <div class="card">
-    Email: nova@example.com <br>
-    WhatsApp: 08xxxxxxxxxx
-  </div>
+<h2>Contact</h2>
+<div class="card">
+Email: novaabbas28@gmail.com <br>
+WA: 08xxxxxxxx
+</div>
 </section>
 
 <footer>
-  © 2026 Nova Abbas | Portfolio Website
+© 2026 Nova Abbas
 </footer>
 
 <script>
-  const cards = document.querySelectorAll('.card');
+// animasi scroll muncul
+const sections = document.querySelectorAll("section");
 
-  function reveal(){
-    cards.forEach(card => {
-      const top = card.getBoundingClientRect().top;
-      if(top < window.innerHeight - 100){
-        card.classList.add('show');
-      }
-    });
-  }
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add("show");
+    }
+  });
+});
 
-  window.addEventListener('scroll', reveal);
-  reveal();
+// trigger awal
+sections.forEach(sec => sec.classList.add("show"));
 </script>
 
 </body>
