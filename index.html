@@ -15,45 +15,35 @@ body{
   overflow-x:hidden;
 }
 
-/* HEADER */
 header{
   text-align:center;
-  padding:60px 20px 40px;
+  padding:60px 20px 30px;
 }
 
 header img{
   width:120px;
   border-radius:50%;
   box-shadow:0 10px 30px rgba(255,105,135,0.3);
-  animation:float 4s ease-in-out infinite;
+  animation:float 4s infinite;
 }
 
 @keyframes float{
   50%{transform:translateY(-10px);}
 }
 
-header h1{
-  margin:10px 0 5px;
-}
-
-/* NAV */
 nav{
-  position:sticky;
-  top:0;
-  backdrop-filter:blur(10px);
-  background:rgba(255,255,255,0.6);
   display:flex;
   justify-content:center;
   gap:10px;
+  flex-wrap:wrap;
   padding:10px;
-  z-index:1000;
 }
 
 nav button{
   border:none;
   padding:8px 16px;
   border-radius:20px;
-  background:transparent;
+  background:white;
   cursor:pointer;
   transition:0.3s;
 }
@@ -63,34 +53,32 @@ nav button.active{
   color:white;
 }
 
-nav button:hover{
-  transform:translateY(-2px);
-}
-
-/* CONTAINER */
 .container{
+  position:relative;
   max-width:900px;
   margin:auto;
-  position:relative;
-  min-height:500px;
+  height:520px;
+  overflow:hidden;
 }
 
-/* SECTION */
 .section{
   position:absolute;
   width:100%;
+  top:0;
+  left:100%;
   opacity:0;
-  transform:translateY(30px);
   transition:0.5s ease;
 }
 
 .section.active{
+  left:0;
   opacity:1;
-  transform:translateY(0);
-  position:relative;
 }
 
-/* CARD */
+.section.prev{
+  left:-100%;
+}
+
 .card{
   background:white;
   padding:20px;
@@ -104,22 +92,15 @@ nav button:hover{
   transform:translateY(-5px);
 }
 
-/* IMAGE */
 .card img{
   width:100%;
   border-radius:10px;
   margin-top:10px;
-  transition:0.4s;
-}
-
-.card img:hover{
-  transform:scale(1.05);
 }
 
 footer{
   text-align:center;
-  padding:30px;
-  margin-top:40px;
+  padding:20px;
 }
 </style>
 </head>
@@ -129,7 +110,7 @@ footer{
 <header>
   <img src="novaphoto.jpg.jpeg">
   <h1>NOVA ABBAS</h1>
-  <p>Mahasiswa Bisnis Digital | Marketing | E-Commerce & Data</p>
+  <p>Mahasiswa Bisnis Digital | Marketing | E-Commerce & Data Analis</p>
 </header>
 
 <nav>
@@ -159,7 +140,7 @@ footer{
 <div id="portfolio" class="section">
   <div class="card">
     <h3>Admin Marketplace (2023 – sekarang)</h3>
-    <p>Mengelola pesanan, produk, stok, dan melayani pelanggan.</p>
+    <p>Mengelola pesanan, produk, stok, menginput data penjualan, serta melayani pelanggan untuk meningkatkan penjualan dan kepercayaan konsumen.</p>
   </div>
 
   <div class="card">
@@ -172,16 +153,16 @@ footer{
 <div id="business" class="section">
   <div class="card">
     <h3>Nova Lumina</h3>
-    <p>Toko online di Shopee dengan fokus kualitas dan pelayanan.</p>
+    <p>Nova Lumina adalah toko online di Shopee dengan fokus kualitas produk, harga terjangkau, dan pelayanan responsif.</p>
     <img src="tokoshope.jpeg">
   </div>
 </div>
 
 <div id="goals" class="section">
   <div class="card">
-    - Lulus tepat waktu <br>
-    - Karier di Bisnis Digital <br>
-    - Bangun bisnis sendiri
+    - Lulus tepat waktu dengan hasil maksimal <br>
+    - Mengembangkan karier di bidang Bisnis Digital <br>
+    - Membangun dan mengembangkan bisnis sendiri
   </div>
 </div>
 
@@ -197,17 +178,26 @@ footer{
 <footer>© 2026 Nova Abbas</footer>
 
 <script>
+let current = document.querySelector('.section.active');
+
 function show(id,btn){
-  document.querySelectorAll('.section').forEach(s=>{
-    s.classList.remove('active');
-  });
+  const next = document.getElementById(id);
 
-  document.querySelectorAll('nav button').forEach(b=>{
-    b.classList.remove('active');
-  });
+  if(next === current) return;
 
-  document.getElementById(id).classList.add('active');
+  current.classList.remove('active');
+  current.classList.add('prev');
+
+  next.classList.add('active');
+
+  setTimeout(()=>{
+    current.classList.remove('prev');
+  },500);
+
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
+
+  current = next;
 }
 </script>
 
