@@ -9,7 +9,7 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background: linear-gradient(135deg,#f9f9f9,#e6f0ff);
+  background: linear-gradient(135deg,#f9f9f9,#e8f2ff);
   color: #333;
   scroll-behavior: smooth;
 }
@@ -22,29 +22,29 @@ header {
   text-align: center;
 }
 
-/* FOTO ANIMASI */
 header img {
   width: 140px;
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid white;
-  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  box-shadow: 0 0 25px rgba(255,255,255,0.3);
   animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
+  0% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  100% { transform: translateY(0); }
 }
 
 /* NAV */
 nav {
   background: #222;
-  padding: 10px;
+  padding: 12px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 nav a {
@@ -90,17 +90,6 @@ h2 {
 
 .card:hover {
   transform: scale(1.02);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-/* GAMBAR DI CARD */
-.card img {
-  border-radius: 10px;
-  transition: 0.4s;
-}
-
-.card img:hover {
-  transform: scale(1.03);
 }
 
 /* FOOTER */
@@ -118,7 +107,7 @@ footer {
 <header>
   <img src="fotokamu.jpg.jpeg">
   <h1>NOVA ABBAS</h1>
-  <p>Mahasiswa Bisnis Digital | Marketing | E-Commerce | Data</p>
+  <p>Mahasiswa Bisnis Digital | Tertarik Marketing, E-Commerce & Data Analis</p>
 </header>
 
 <nav>
@@ -132,26 +121,30 @@ footer {
 
 <section id="about">
 <h2>About Me</h2>
-<p>Saya mahasiswa Bisnis Digital dengan fokus Digital Marketing, E-Commerce, dan Data Analysis.</p>
+<div class="card">
+Saya adalah mahasiswa S1 Bisnis Digital yang memiliki ketertarikan pada bidang Digital Marketing, E-Commerce, dan Analisis Data. Saya memiliki pengalaman dalam mengelola marketplace serta dasar pengolahan data menggunakan Microsoft Excel.
+</div>
 </section>
 
 <section id="skills">
 <h2>Skills</h2>
-<div class="card">Excel & Data Analysis</div>
+<div class="card">Microsoft Excel (Basic & Pivot Table)</div>
 <div class="card">Marketplace Management</div>
 <div class="card">Digital Marketing</div>
+<div class="card">Data Entry (Accurate)</div>
 </section>
 
 <section id="portfolio">
 <h2>Portfolio</h2>
 
 <div class="card">
-<h3>Admin Marketplace</h3>
-<p>Mengelola produk, stok, dan penjualan di Shopee.</p>
+<h3>Admin Marketplace (2023 – sekarang)</h3>
+<p>Mengelola pesanan, produk, stok, menginput data penjualan, serta melayani pelanggan untuk meningkatkan penjualan dan kepercayaan konsumen.</p>
 </div>
 
 <div class="card">
-<h3>Pemateri</h3>
+<h3>Pemateri Pengabdian Masyarakat (27 Juni 2025)</h3>
+<p>Tema: "Cerdas Mengelola Keuangan Sejak Dini" di Pondok Pesantren Darussalam Poris Jaya Batu Ceper Kota Tangerang.</p>
 <img src="pemateri.jpeg" width="100%">
 </div>
 
@@ -159,26 +152,29 @@ footer {
 
 <section id="business">
 <h2>Business</h2>
+
 <div class="card">
 <h3>Nova Lumina</h3>
+<p>Nova Lumina adalah toko online di Shopee yang fokus pada produk berkualitas dengan harga terjangkau dan pelayanan cepat.</p>
 <img src="tokoshope.jpeg" width="100%">
 </div>
+
 </section>
 
 <section id="goals">
 <h2>Goals</h2>
 <div class="card">
-- Lulus tepat waktu <br>
-- Bangun bisnis sendiri <br>
-- Jadi entrepreneur
+- Lulus tepat waktu dengan hasil maksimal <br>
+- Mengembangkan karier di Bisnis Digital <br>
+- Membangun dan mengembangkan bisnis sendiri
 </div>
 </section>
 
 <section id="contact">
 <h2>Contact</h2>
 <div class="card">
-Email: novaabbas28@gmail.com <br>
-WA: 08xxxxxxxx
+Email: novaabbass28@gmail.com <br>
+WhatsApp: 08xxxxxxxxxx
 </div>
 </section>
 
@@ -187,7 +183,6 @@ WA: 08xxxxxxxx
 </footer>
 
 <script>
-// animasi scroll muncul
 const sections = document.querySelectorAll("section");
 
 window.addEventListener("scroll", () => {
@@ -199,7 +194,7 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// trigger awal
+// biar langsung muncul saat pertama buka
 sections.forEach(sec => sec.classList.add("show"));
 </script>
 
