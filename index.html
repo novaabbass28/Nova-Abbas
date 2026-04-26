@@ -3,264 +3,439 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Lumina | Portfolio</title>
+    <title>Nova Lumina | Digital Business & Marketing</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --soft-pink: #ffe4e9; /* Pink lebih berasa */
-            --rose-pink: #ff85a1;
+            --blush-pink: #fff0f3; /* Pink sangat lembut untuk bg */
+            --rose-gold: #e6c1c8;
+            --dusty-rose: #d68c9c;
             --hot-pink: #ff4d6d;
+            --text-dark: #2d3436;
+            --text-light: #636e72;
             --white: #ffffff;
-            --glass-pink: rgba(255, 228, 233, 0.5);
+            --shadow-soft: 0 10px 40px rgba(214, 140, 156, 0.1);
         }
 
+        /* --- Reset & Base --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background: linear-gradient(135deg, #ffffff 0%, var(--soft-pink) 100%);
-            color: #444;
-            line-height: 1.6;
+            background-color: var(--blush-pink);
+            color: var(--text-dark);
+            overflow-x: hidden;
         }
 
-        /* --- Header & Nav --- */
+        /* --- Animasi Dasar (Keyframes) --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* --- Header / Nav --- */
         header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 240, 243, 0.8);
+            backdrop-filter: blur(15px);
             padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+            animation: fadeInDown 0.8s ease;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
             color: var(--hot-pink);
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
         }
 
         nav a {
             text-decoration: none;
-            color: #666;
+            color: var(--text-dark);
             font-size: 0.85rem;
-            margin-left: 20px;
             font-weight: 500;
-            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
         }
 
         nav a:hover { color: var(--hot-pink); }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section (UTAMA: TEMPAT FOTO UTAMA) --- */
         .hero {
-            padding: 80px 8% 40px;
-            text-align: center;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 8% 60px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--blush-pink) 100%);
         }
 
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: #222;
+        .hero-content {
+            flex: 1;
+            padding-right: 50px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-content span {
+            color: var(--dusty-rose);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
             margin-bottom: 15px;
         }
 
-        .hero span {
-            color: var(--rose-pink);
-            font-weight: 500;
-            letter-spacing: 1px;
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: #2d3436;
+        }
+
+        .hero-content h1 em {
+            color: var(--hot-pink);
+        }
+
+        /* GAYA TOMBOL PROFESIONAL */
+        .btn-pink {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--hot-pink);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
             font-size: 0.9rem;
-            text-transform: uppercase;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.2);
         }
 
-        /* --- Container Utama --- */
+        .btn-pink:hover {
+            background-color: #ff1a4a;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(255, 77, 109, 0.3);
+        }
+
+        /* --- TEMPAT FOTO PROFIL UTAMA (Hero) --- */
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .photo-frame {
+            width: 400px;
+            height: 500px;
+            background: var(--white);
+            border-radius: 60px 20px 60px 20px; /* Bentuk anggunly */
+            padding: 15px;
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            border: 2px solid rgba(214, 140, 156, 0.2);
+            transition: 0.5s ease;
+        }
+
+        .photo-frame:hover {
+            border-color: var(--hot-pink);
+            transform: scale(1.02);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50px 15px 50px 15px;
+        }
+
+        /* Elemen Bunga Melayang */
+        .decor-element {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--dusty-rose);
+            opacity: 0.5;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* --- Sections Utama --- */
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 60px 20px;
         }
 
-        /* --- Cards & Sections --- */
-        .section-card {
+        /* GAYA KARTU PREMIUM DENGAN ANIMASI */
+        .pro-card {
             background: var(--white);
             border-radius: 30px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(255, 133, 161, 0.1);
-            border: 1px solid rgba(255, 133, 161, 0.1);
-            transition: 0.4s;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(214, 140, 156, 0.1);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 133, 161, 0.15);
+        .pro-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(214, 140, 156, 0.15);
+            border-color: rgba(255, 77, 109, 0.2);
         }
+
+        .pro-card::before {
+            content: '✿';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 10rem;
+            color: var(--blush-pink);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .card-content { position: relative; z-index: 1; }
 
         h2 {
             font-family: 'Playfair Display', serif;
-            color: var(--hot-pink);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: var(--text-dark);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--blush-pink);
+            display: inline-block;
+            padding-bottom: 10px;
         }
 
-        /* --- Skills Badges --- */
-        .skills-grid {
+        /* --- Skills (Lebih Clean) --- */
+        .skills-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
 
-        .skill-tag {
-            background: var(--soft-pink);
-            color: var(--hot-pink);
-            padding: 8px 18px;
+        .skill-item {
+            background: #fff8f9;
+            color: var(--dusty-rose);
+            padding: 12px 25px;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
-        }
-
-        /* --- Portfolio & Business Items --- */
-        .item {
-            border-left: 3px solid var(--soft-pink);
-            padding-left: 20px;
-            margin-bottom: 25px;
-        }
-
-        .item h4 {
-            color: #333;
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-
-        .item .date {
-            color: var(--rose-pink);
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        /* --- Footer / Contact --- */
-        footer {
-            background: var(--white);
-            padding: 60px 8%;
-            text-align: center;
-            border-radius: 50px 50px 0 0;
-            margin-top: 50px;
-        }
-
-        .contact-links a {
-            display: inline-block;
-            margin: 10px 15px;
-            text-decoration: none;
-            color: #444;
-            font-weight: 600;
-            padding: 10px 25px;
-            border: 2px solid var(--soft-pink);
-            border-radius: 50px;
+            border: 1px solid rgba(214, 140, 156, 0.1);
             transition: 0.3s;
         }
 
-        .contact-links a:hover {
+        .skill-item:hover {
             background: var(--hot-pink);
-            color: white;
+            color: var(--white);
             border-color: var(--hot-pink);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            header { flex-direction: column; gap: 15px; }
-            nav a { margin: 0 10px; }
+        /* --- GRID ITEM (Untuk Portfolio & Business) --- */
+        .item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .grid-card {
+            background: #fff8f9;
+            padding: 30px;
+            border-radius: 20px;
+            transition: 0.3s ease;
+            border: 1px solid rgba(214, 140, 156, 0.1);
+        }
+
+        .grid-card:hover {
+            background: var(--white);
+            border-color: var(--hot-pink);
+        }
+
+        /* TEMPAT FOTO UNTUK BUSINESS / PORTFOLIO */
+        .item-photo {
+            width: 100%;
+            height: 180px;
+            background: var(--rose-gold);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .item-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .grid-card h4 { font-size: 1.1rem; color: #333; margin-bottom: 8px; }
+        .grid-card .date { color: var(--dusty-rose); font-weight: 600; font-size: 0.8rem; display: block; margin-bottom: 10px; }
+
+        /* --- Footer (Modern & Anggun) --- */
+        footer {
+            background: var(--white);
+            padding: 80px 8% 40px;
+            text-align: center;
+            border-radius: 60px 60px 0 0;
+            margin-top: 80px;
+            border-top: 1px solid var(--blush-pink);
+        }
+
+        footer h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 40px; }
+
+        .contact-group a {
+            text-decoration: none;
+            color: var(--hot-pink);
+            font-weight: 600;
+            margin: 0 20px;
+            font-size: 1rem;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .contact-group a:hover { border-color: var(--hot-pink); }
+
+        /* Responsif untuk HP */
+        @media (max-width: 992px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 150px; }
+            .hero-content { padding-right: 0; margin-bottom: 50px; }
+            .hero-content h1 { font-size: 3rem; }
+            .photo-frame { width: 300px; height: 380px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo">Nova Lumina</a>
+        <a href="#" class="logo">NL</a>
         <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
-    <div class="hero">
-        <span>Digital Business Student</span>
-        <h1>E-Portfolio</h1>
-        <p style="color: #888;">Marketing, E-Commerce & Data Analyst Enthusiast</p>
-    </div>
-
-    <div class="container">
+    <section class="hero">
+        <div class="hero-content">
+            <span>Digital Business Specialist</span>
+            <h1>Nova <br> Lumina<em>.</em></h1>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Mahasiswa S1 Bisnis Digital | Tertarik Marketing, E-Commerce & Data Analis</p>
+            <a href="#contact" class="btn-pink">Let's Work Together →</a>
+        </div>
         
-        <section id="about" class="section-card">
-            <h2>✿ About Me</h2>
-            <p>Saya adalah mahasiswa S1 Bisnis Digital yang memiliki ketertarikan pada bidang <strong>Digital Marketing, E-Commerce, dan Analisis Data</strong>. Saya memiliki pengalaman dalam mengelola marketplace serta dasar pengolahan data menggunakan Microsoft Excel.</p>
-        </section>
+        <div class="hero-image">
+            <div class="decor-element" style="top: 10%; left: 10%;">✿</div>
+            <div class="decor-element" style="bottom: 15%; right: 10%; animation-delay: 1s;">❀</div>
+            
+            <div class="photo-frame">
+                <img src="assets/nova-photo.jpg" alt="Nova Lumina">
+            </div>
+        </div>
+    </section>
 
-        <section id="skills" class="section-card">
-            <h2>✿ Skills</h2>
-            <div class="skills-grid">
-                <span class="skill-tag">Microsoft Excel (Basic & Pivot Table)</span>
-                <span class="skill-tag">Marketplace Management</span>
-                <span class="skill-tag">Digital Marketing</span>
-                <span class="skill-tag">Data Entry (Accurate)</span>
-                <span class="skill-tag">Public Speaking</span>
+    <main class="container">
+        
+        <section id="about" class="pro-card">
+            <div class="card-content">
+                <h2>✿ About Me</h2>
+                <p>Saya memiliki ketertarikan kuat pada bidang <strong>Digital Marketing, E-Commerce, dan Analisis Data</strong>. Pengalaman saya dalam mengelola marketplace dan mengolah data dasar menggunakan Microsoft Excel menjadi fondasi saya untuk terus berkembang.</p>
+                
+                <h3 style="margin: 30px 0 20px; font-weight: 500; font-size: 1rem;">My Expertise:</h3>
+                <div class="skills-container">
+                    <span class="skill-item">Microsoft Excel (Pivot Table)</span>
+                    <span class="skill-item">Marketplace Management</span>
+                    <span class="skill-item">Digital Marketing</span>
+                    <span class="skill-item">Data Entry (Accurate)</span>
+                </div>
             </div>
         </section>
 
-        <section id="portfolio" class="section-card">
-            <h2>✿ Portfolio</h2>
-            <div class="item">
-                <h4>Admin Marketplace</h4>
-                <span class="date">2023 – Sekarang</span>
-                <p>Mengelola pesanan, produk, stok, menginput data penjualan, serta melayani pelanggan untuk meningkatkan penjualan dan kepercayaan konsumen.</p>
+        <section id="portfolio" class="pro-card">
+            <div class="card-content">
+                <h2>✿ Portfolio & Projects</h2>
+                <div class="item-grid">
+                    <div class="grid-card">
+                        <div class="item-photo"><img src="assets/marketplace.jpg" alt="Admin Marketplace"></div>
+                        <h4>Admin Marketplace</h4>
+                        <span class="date">2023 – Sekarang</span>
+                        <p>Mengelola produk, stok, pesanan, dan layanan pelanggan untuk meningkatkan penjualan.</p>
+                    </div>
+                    <div class="grid-card">
+                        <div class="item-photo"><img src="assets/public-speaking.jpg" alt="Pemateri"></div>
+                        <h4>Pemateri Pengabdian Masyarakat</h4>
+                        <span class="date">27 Juni 2025</span>
+                        <p>Tema: "Cerdas Mengelola Keuangan Sejak Dini" di Batu Ceper, Kota Tangerang.</p>
+                    </div>
+                </div>
             </div>
-            <div class="item">
-                <h4>Pemateri Pengabdian Masyarakat</h4>
-                <span class="date">27 Juni 2025</span>
-                <p>Tema: "Cerdas Mengelola Keuangan Sejak Dini" di Pondok Pesantren Darussalam Poris Jaya. Mengembangkan kemampuan public speaking dan edukasi keuangan.</p>
-            </div>
         </section>
 
-        <section id="business" class="section-card">
-            <h2>✿ My Business: Nova Lumina</h2>
-            <p>Toko online yang bergerak di bidang penjualan melalui marketplace seperti <strong>Shopee</strong>. Fokus pada kualitas produk, harga terjangkau, dan pelayanan responsif.</p>
-            <p style="margin-top: 10px; font-style: italic; color: var(--rose-pink);">"Saat ini aktif berjualan dan terus dikembangkan untuk menjangkau pasar yang lebih luas."</p>
-        </section>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-bottom: 40px;">
+            <section id="business" class="pro-card" style="margin-bottom: 0;">
+                <div class="card-content">
+                    <h2>✿ My Business</h2>
+                    <h4>Nova Lumina (Online Shop)</h4>
+                    <p style="margin-top: 10px;">Fokus pada penjualan di marketplace seperti Shopee. Mengutamakan kualitas produk, harga terjangkau, dan pelayanan responsif.</p>
+                </div>
+            </section>
+            
+            <section id="goals" class="pro-card" style="margin-bottom: 0;">
+                <div class="card-content">
+                    <h2>✿ Goals</h2>
+                    <ul style="list-style: none; font-size: 0.9rem;">
+                        <li style="margin-bottom: 10px;">✨ Lulus Tepat Waktu</li>
+                        <li style="margin-bottom: 10px;">✨ Karier Bisnis Digital</li>
+                        <li>✨ Mengembangkan Bisnis</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
 
-        <section id="goals" class="section-card">
-            <h2>✿ Goals</h2>
-            <ul style="list-style: none;">
-                <li style="margin-bottom: 10px;">✨ Lulus tepat waktu dengan hasil maksimal</li>
-                <li style="margin-bottom: 10px;">✨ Mengembangkan karier di bidang Bisnis Digital</li>
-                <li>✨ Membangun dan mengembangkan bisnis sendiri</li>
-            </ul>
-        </section>
-
-    </div>
+    </main>
 
     <footer id="contact">
-        <h2 style="justify-content: center; margin-bottom: 30px;">Let's Connect</h2>
-        <div class="contact-links">
-            <a href="mailto:novaabbass28@gmail.com">Email Me</a>
-            <a href="https://wa.me/62895374763405" target="_blank">WhatsApp</a>
+        <h3>Connect with Me</h3>
+        <div class="contact-group">
+            <a href="mailto:novaabbass28@gmail.com">novaabbass28@gmail.com</a>
+            <a href="https://wa.me/62895374763405" target="_blank">WhatsApp Chat</a>
         </div>
-        <p style="margin-top: 40px; font-size: 0.8rem; color: #bbb;">&copy; 2026 Nova Lumina. All rights reserved.</p>
+        <p style="margin-top: 60px; font-size: 0.8rem; color: #bbb;">&copy; 2026 Nova Lumina. Built with passion & elegance.</p>
     </footer>
 
 </body>
